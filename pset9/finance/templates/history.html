@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <form action="/history" method="post">
+        <div class="mb-3">
+            <table class="table table-striped mx-auto">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Symbol</th>
+                    <th scope="col">Shares</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Transactions (UTC)</th>
+                </tr>
+                </thead>
+                    <tbody>
+                    {% for row in transactions %}
+                    <tr>
+                        <th scope="row">{{ row["symbol"].upper() }}</th>
+                        <td>{{ row["shares"] }}</td>
+                        <td>${{ "{:.2f}".format(row["price"]) }}</td>
+                        <td>{{ row["timestamp"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote: {{ name }}
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Symbol</th>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">Price</th>
+                </tr>
+                </thead>
+                <tr>
+                    <th scope="col">{{ name }}</th>
+                    <td>{{ compName }}</td>
+                    <td>{{ price }}</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+{% endblock %}

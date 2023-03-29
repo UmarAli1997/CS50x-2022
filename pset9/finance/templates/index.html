@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <form action="/index" method="post">
+        <div class="mb-3">
+            <table class="table table-striped mx-auto">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Symbol</th>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">No. of Shares</th>
+                    <th scope="col">Current Price</th>
+                    <th scope="col">Total Value</th>
+                </tr>
+                </thead>
+                    <tbody>
+                    {% for symbol, values in portfolio.items() %}
+                    <tr>
+                        <th scope="row">{{ symbol.upper() }}</th>
+                        <td>{{ values[0] }}</td>
+                        <td>{{ values[1] }}</td>
+                        <td>{{ values[2] }}</td>
+                        <td>{{ values[3] }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <th scope="row" style="text-align:right" colspan="4">Cash</th>
+                        <td>{{ cash }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" style="text-align:right" colspan="4">Total Balance</th>
+                        <td> {{ portfolioValue }} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+{% endblock %}
